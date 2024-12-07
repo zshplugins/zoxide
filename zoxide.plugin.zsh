@@ -25,17 +25,17 @@ fi
 # Used only once when zsh-zoxide is installed, or then
 # Plugins[ZSH_ZOXIDE_READY] reset to 0 to prevent full re-initialization
 if (( ! Plugins[ZSH_ZOXIDE_READY] )); then
-  autoload -Uz .zsh-prepare-zoxide
+  autoload -Uz .prepare-zoxide
   # Set zoxide as ready to initiate.
   Plugins[ZSH_ZOXIDE_READY]=1
   # Returns 100 if missing dependencies.
   # Returns 110 for incorrect dependencies version.
   # Returns 102 if git submodule failed to be initialized.
-  .zsh-prepare-zoxide || {
+  .prepare-zoxide || {
     print "Failed to prepare zsh-zoxide, exit code: $?"
     return $?
   }
-  unfunction .zsh-prepare-zoxide &> /dev/null
+  unfunction .prepare-zoxide &> /dev/null
 fi
 
 # Set variable to preferred prefix.
